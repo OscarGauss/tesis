@@ -1,0 +1,95 @@
+\section{ANÁLISIS DE REQUISITOS}
+
+\subsection{REQUISITOS FUNCIONALES}
+
+\begin{enumerate}
+    \item Autenticación y Gestión de Usuarios:
+
+    •	Registro e inicio de sesión.
+    
+    •	Perfiles de usuario con estadísticas y logros.
+    \item Gestión de Problemas:
+
+    •	Banco de problemas categorizados.
+    
+    •	Posibilidad de agregar, editar y eliminar problemas (para administradores).
+    \item Sistema de Evaluación:
+
+    •	Evaluación automática de soluciones.
+    
+    •	Feedback instantáneo sobre la corrección y eficiencia de las soluciones.
+    \item Competencias y Equipos:
+    
+    •	Creación y gestión de equipos.
+    
+    •	Organización de competiciones internas.
+
+    \item Recursos Educativos:
+    
+    •	Tutoriales y artículos sobre algoritmos y estructuras de datos.
+    
+    •	Ejemplos de soluciones y análisis de problemas.
+    \item Comunidad y Soporte:
+    
+    •	Foros de discusión.
+    
+    Sistema de mensajería y notificaciones.
+\end{enumerate}
+
+\subsection{REQUISITOS NO FUNCIONALES}
+
+\begin{enumerate}
+    \item Usabilidad:
+    \begin{itemize}
+        \item Interfaz intuitiva y fácil de usar.
+	\item Compatible con dispositivos móviles.
+    \end{itemize}
+    \item Rendimiento:
+    \begin{itemize}
+        \item Tiempo de respuesta rápido en la evaluación de soluciones.
+	\item Escalabilidad para manejar un gran número de usuarios concurrentes.
+    \end{itemize}
+    \item Seguridad:
+    \begin{itemize}
+        \item Protección de datos personales.
+	\item Prevención de ataques como inyección SQL y XSS.
+    \end{itemize}
+    \item Mantenimiento y Actualización:
+    \begin{itemize}
+        \item Facilidad para actualizar y mantener la base de datos de problemas y recursos
+    \end{itemize}
+\end{enumerate}
+
+\subsection{MATRIZ DE TRAZABILIDAD DE REQUERIMIENTOS}
+
+\subsection{REQUISITOS FUNCIONALES}
+
+\begin{longtable}{|p{1.2cm}|p{2.5cm}|p{3cm}|p{1.8cm}|p{1.8cm}|p{2.5cm}|}
+\hline
+    \textbf{ID} & \textbf{Requerimiento} & \textbf{Descripción} & \textbf{Prioridad} & \textbf{Sprint} & \textbf{Tarea} \\ \hline
+    \textbf{RF01} & Autenticación de usuarios & Permitir a los usuarios registrarse y iniciar sesión. & Alta & Sprint 1 & Implementación del registro de usuarios, Implementación del inicio de sesión de usuarios \\ \hline
+    \textbf{RF02} & Gestión de problemas & Permitir agregar, editar y eliminar problemas de práctica. & Alta & Sprint 2 & Crear modelo de problemas, Implementación de la interfaz para agregar/editar/eliminar problemas \\ \hline
+    \textbf{RF03} & Sistema de evaluación automática & Evaluar automáticamente las soluciones enviadas por los usuarios. & Alta & Sprint 3 & Diseño del sistema de evaluación, Integración de compilador, Implementación de la lógica de evaluación \\ \hline
+    \textbf{RF04} & Creación y gestión de equipos & Permitir la creación y gestión de equipos de estudiantes. & Media & Sprint 4 & Crear modelo de equipos, Implementación de la funcionalidad para crear/gestionar equipos \\ \hline
+    \textbf{RF05} & Organización de competiciones internas & Facilitar la organización de competiciones de práctica. & Media & Sprint 4 & Implementación de la funcionalidad para organizar competiciones \\ \hline
+    \textbf{RF06} & Repositorio de tutoriales y artículos & Proveer tutoriales y artículos sobre algoritmos y estructuras de datos. & Media & Sprint 5 & Crear modelo de recursos educativos, Implementación de la interfaz para agregar/visualizar/buscar recursos \\ \hline
+    \textbf{RF07} & Foros de discusión & Facilitar la discusión y el intercambio de ideas entre los usuarios. & Media & Sprint 6 & Crear modelo de foros, Implementación de foros de discusión \\ \hline
+    \textbf{RF08} & Sistema de mensajería & Permitir a los usuarios enviarse mensajes privados. & Baja & Sprint 6 & Implementación del sistema de mensajería \\ \hline
+    \textbf{RF09} & Sistema de notificaciones & Notificar a los usuarios sobre actividades relevantes (nuevos problemas, mensajes, etc.). & Baja & Sprint 6 & Implementación del sistema de notificaciones \\ \hline
+\end{longtable}
+
+
+\subsection{REQUISITOS NO FUNCIONALES}
+
+%\begin{table}[hp]
+%    \centering
+    \begin{longtable}{|p{1.2cm}|p{2.5cm}|p{3cm}|p{1.8cm}|p{1.8cm}|p{2.5cm}|}
+    \hline
+        \textbf{ID} & \textbf{Requerimiento} & \textbf{Descripción} & \textbf{Prioridad} & \textbf{Sprint} & \textbf{Tarea} \\ \hline
+        \textbf{RNF01} & Usabilidad & La interfaz debe ser intuitiva y fácil de usar. & Alta & Todos & Diseño de UI/UX, Pruebas de usabilidad \\ \hline
+        \textbf{RNF02} & Rendimiento & El sistema debe evaluar las soluciones de manera rápida y eficiente. & Alta & Sprint 3 & Optimización de la lógica de evaluación \\ \hline
+        \textbf{RNF03} & Seguridad & Protección de datos personales y prevención de ataques como inyección SQL y XSS. & Alta & Todos & Implementación de medidas de seguridad \\ \hline
+        \textbf{RNF04} & Mantenimiento y Actualización & La base de datos y la aplicación deben ser fáciles de mantener y actualizar. & Media & Todos & Documentación y diseño de arquitectura mantenible \\ \hline
+    \end{longtable}
+%\end{table}
+

@@ -1,0 +1,131 @@
+\section{REQUISITOS}
+
+\subsection{REQUISITOS FUNCIONALES}
+
+Los requisitos funcionales se desarrollaron en una matriz de trazabilidad como se muestra en la Tabla 1. ya que así se permitirá monitorear cada uno de los requisitos durante el ciclo de vida del proyecto para asegurar que se están cumpliendo de manera eficaz.
+
+ \begin{longtable}[c]{| m{0.5cm} | m{3.5cm} | m{3.5cm} | m{3cm} | m{3.5cm} |}
+    \hline
+    Id & Descripción & Criterios de aceptación & Objetivo & Desarrollo o Planificación
+    \\ \hline
+    \endfirsthead
+    \endhead
+    1
+    & El sistema debe tener registro de usuario y login del mismo. 
+    & Usuario apto para crear cuenta e iniciar en ella dentro de la aplicación web. Inicialmente cada usuario tiene un rol de “user logged”. El usuario administrador (admin) será responsable de asignar privilegios.
+    & Personalizar la aplicación web para todo tipo de usuario
+    & Este requisito deberá inicializar desarrollo MERN de la aplicación web
+    \\ \hline
+    2
+    & El sistema deberá tener una página principal
+    & Al momento de ingresar al sistema el usuario deberá estar en la página de inicio de forma automática.
+    & El objetivo de crear una página inicial será de guiar al usuario al uso del sistema.
+    & Esta página de inicio deberá estar contenido de noticias en general, de información sobre concurso y de blogs que hayan posteado algunos usuarios.
+    \\ \hline
+            3
+            & El sistema deberá
+proveer
+un área de tutoriales
+            & Los tutoriales deberán abarcar
+varios temas respectivos a
+concursos de programación. Por
+ejemplo, tutoriales
+sobre diferentes algoritmos,
+ejercicios propuestos y
+soluciones
+            & El objetivo de tener
+tutoriales en el sistema será
+para el
+aprendizaje de los usuarios
+interesados en los concursos
+de
+programación.
+            & Será necesario que el sistema
+tenga una sección de tutoriales
+donde al ingresar a uno en
+particular se deberá llevar a otra
+página con el tutorial en texto plano.
+            \\ \hline
+            4
+            & El sistema deberá tener
+un motor de
+evaluación.
+            & El sistema deberá evaluar
+los programas presentados por
+los usuarios.
+            & El objetivo principal de todo
+el sistema en sí es la
+evaluación automática de
+los programas presentados
+por los usuarios.
+            & El motor de búsqueda será la
+parte más importante en el sistema,
+será necesario implementar un motor
+ya existente que esté correctamente
+comprobado en su éxito respecto a la
+evaluación.
+            \\ \hline
+            5
+            & El sistema deberá tener
+una lista de problemas
+propuestos.
+            & El sistema deberá desplegar una
+lista con el nombre y puntuación
+de cada problema.
+    & El objetivo de desplegar una
+lista de problemas en el
+sistema es para que el
+usuario pueda identificar y
+resolver los problemas.
+    & Se deberá desplegar una nueva
+página proveniente de cada subcategoría, la cual presentará una lista
+de problemas.
+Será importante que el sistema tenga
+la opción de importar archivos
+comprimidos para la adición de
+nuevos problemas planteados por
+usuarios administradores.
+    \\ \hline
+\end{longtable}
+
+\subsection{REQUISITOS NO FUNCIONALES}
+
+Luego del análisis del sistema proyectado se identificaron los siguientes requerimientos no
+funcionales:
+\begin{itemize}
+    \item No será posible estar autenticado en más de una máquina.
+    \item La contraseña de usuario deberá tener un mínimo de 6 caracteres.
+    \item Los avatares en el perfil de usuario se irán desbloqueando de acuerdo a su nivel y puntaje. 
+\end{itemize}
+
+\textbf{Seguridad}
+\begin{itemize}
+    \item El sistema utilizará un protocolo SSL para realizar conexiones seguras entre clientes.
+    \item El sistema registrará al usuario con una contraseña segura JWT.
+\end{itemize}
+
+\textbf{Confiabilidad}
+\begin{itemize}
+    \item El sistema permitirá almacenar datos de manera correcta y completa en la base de datos, además de ello ofrece seguridad y confidencialidad.
+\end{itemize}
+
+\textbf{Portabilidad}
+\begin{itemize}
+    \item El sistema será portable ya que deberá ser un sistema web que debe funcionar únicamente en la web y no requiere de instalación, sino de una conexión activa a internet.
+    \item El sistema deberá ser portable en cualquier navegador.
+\end{itemize}
+
+\textbf{Disponibilidad}
+\begin{itemize}
+    \item El sistema deberá estar disponible en un 100\% para todo el público, cuando sea el momento de realizar un mantenimiento el sistema mostrará un mensaje y es en ese momento que dejará de estar disponible para el público la cantidad de tiempo que sea requerido.
+\end{itemize}
+
+\textbf{Mantenibilidad}
+\begin{itemize}
+    \item Se deberá realizar un estudio que determine cuál será el tiempo necesario para realizar un mantenimiento necesario al sistema.
+    \item Se deberán realizar cambios y actualizaciones necesarias cada vez que el programador vea por necesario, estas se deberán realizar a parte del tiempo de mantenibilidad.
+\end{itemize}
+
+\section{DIAGRAMA DE CASOS DE USO}
+
+\section{DIAGRAMA DE SECUENCIA}

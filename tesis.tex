@@ -1,0 +1,219 @@
+% \documentclass[12pt,a4paper,openany, ]{book} %el comando "openany" sirve que cuando se hace un Chapter, dejará una hoja en blanco.
+\documentclass[12pt,letterpaper]{book}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{tabularx}
+\usepackage{longtable}
+%\usepackage{threeparttable} <--
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{tgtermes} % times font
+
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{wasysym}
+\usepackage{lscape}
+\usepackage[colorlinks=true, linkcolor=black,
+citecolor=black, urlcolor=black,hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{setspace} %por si el titulo es mas largo y el interlineado
+\usepackage{xcolor} %para darle color a las lineas del titulo.
+\usepackage{lipsum} %crea texto ficticio del texto Lorem Ipsum
+%\definecolor{azul}{rgb}{0.17, 0.4, 0.69} %definir color de lineas.
+% \usepackage{natbib}
+%\usepackage[left=2.54cm,top=2.54cm,right=2.54cm,,bottom=2.54cm]{geometry} %para cambiar la configuracion de las medidas a APA se usa "Control + R".
+
+\usepackage[left=3cm,top=3cm,right=3cm,,bottom=4cm]{geometry}
+
+\usepackage[justification=centering]{caption}
+% Reducimos el espacio debajo de las figuras
+\captionsetup{belowskip=0pt}
+
+\newcommand{\grad}{$^{\circ}$}
+\renewcommand{\baselinestretch}{1.5} %interlineado 1.5
+
+\usepackage{csquotes}
+\usepackage[backend=biber,natbib,url=false,doi=false,style=apa,maxcitenames=5]{biblatex}
+
+% Cuando el idioma es otro "et al." cambia, con este comando se fuerza a si o si usar "et al."
+\DefineBibliographyStrings{spanish}{%
+  andothers = {et\addabbrvspace al\adddot}
+}
+\addbibresource{capitulos/biblio.bib}
+
+% SE ELIMINA LA PALABRA "CAPÍTULO" DEL TÍTULO
+\usepackage{titlesec}
+
+% Capítulos sin la palabra "Capítulo "
+\titleformat{\chapter}
+  {\normalsize\bfseries}{\thechapter.}{0.5em}{}
+%   \titlespacing*{\chapter}{0pt}{2pt}{2pt}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}[0pt]
+% \titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+% Cambiamos el tamaño de las secciones
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+% SE ELIMINA LA CABECERA DE LAS HOJAS Y LA NUMERACIÓN ES ABAJO
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand\headrulewidth{0pt}
+% \fancyfoot[RO, LE]{\thepage}
+% \fancyfoot[C]{\thepage}
+% SE ENUMERA A LA DERECHA
+\fancyfoot[R]{\thepage}
+% SE REDEFINE EL ESTILO PARA ENUMERAR LAS PÁGINAS DE CAPÍTULO A LA DERECHA
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \fancyhf{}%
+    \fancyfoot[R]{\thepage}%
+}
+
+% \renewcommand{\contentsname}{Índice}
+
+% Remove indentation for section, subsection, and paragraph in TOC
+\usepackage[subfigure]{tocloft}
+% \setlength{\cftpartindent}{0em}
+% \setlength{\cftchapindent}{0em}
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{0em}
+\setlength{\cftsubsubsecindent}{0em}
+% \setlength{\cftsubsubsecindent}{3em}
+%\cftsetindents{section}{0em}{2.3em}
+%\cftsetindents{subsection}{0em}{3.2em}
+\cftsetindents{paragraph}{0em}{3.7em}
+
+% Redefinir el comando \paragraph para que no aparezca en el índice
+%\usepackage{titlesec}
+%\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+%\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}
+
+%\usepackage{etoolbox}
+
+% Redefinir el comando \paragraph para que no aparezca en el índice
+%\makeatletter
+%\patchcmd{\paragraph}{\addcontentsline{toc}{paragraph}{\theparagraph}}{}{}{}
+%\makeatother
+
+\usepackage{enumitem}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% https://tex.stackexchange.com/questions/395856/switching-tocdepth-in-the-middle-of-a-document
+\newcommand{\changelocaltocdepth}[1]{%
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{#1}}%
+  \setcounter{tocdepth}{#1}%
+}
+
+\renewcommand*{\listalgorithmcfname}{Lista de Algoritmos}
+\renewcommand*{\algorithmcfname}{Algoritmo}
+\renewcommand*{\algorithmautorefname}{algoritmo}
+\SetKwInput{KwData}{Requiere}
+
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+% Contar las figuras sin el capítulo
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+
+%\usepackage{tikz}
+%\usetikzlibrary{shapes.geometric, arrows}
+% Definición del estilo 'process'
+%\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+%\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+%\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% Editando el titulo del indice
+\addto\captionsspanish{% Replace "spanish" with the language you use
+  \renewcommand{\contentsname}%
+    {\fontsize{16}{20}\selectfont ÍNDICE}
+}
+% quitando espacio del titulo del indice
+\setlength{\cftbeforetoctitleskip}{-1em}
+\setlength{\cftaftertoctitleskip}{1em}
+
+% Quitando el identado en cada parrafo
+\setlength\parindent{0pt}
+
+% Espaciado entre parrafos
+\setlength{\parskip}{0.5em}
+
+%\usepackage[smartEllipses]{markdown}
+
+\usepackage{blindtext}
+
+\begin{document}
+    %FRONTMATTER
+    %---------------------------------------------------
+    \frontmatter %numeros romanos
+    \include{caratula}
+% 	\include{jurado}
+% 	\include{agradecimientos}
+	
+    %ÍNDICE O TABLA DE CONTENIDO-------------------
+    \tableofcontents
+    \setcounter{page}{0}
+    %\cleardoublepage
+% 	\addcontentsline{toc}{chapter}{Lista de figuras} % para 						que aparezca en el indice de contenidos
+% 	\listoffigures % indice de figuras
+	%\cleardoublepage
+% 	\addcontentsline{toc}{chapter}{Lista de tablas} % para que 						aparezca en el indice de contenidos
+% 	\listoftables % indice de tablas
+	
+	 % si no queremos que añada la palabra "Capitulo"
+% 	\addcontentsline{toc}{chapter}{INTRODUCCIÓN} % si queremos que aparezca en el índice
+    %\markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado
+    
+    %MAINMATTER
+    %--------------------------------------------------	
+    \mainmatter %numeros arabicos.
+    
+    % \begingroup
+    % \renewcommand{\cleardoublepage}{}
+    % \renewcommand{\clearpage}{}
+    
+    \raggedbottom
+    
+    % \thispagestyle{empty}
+
+    \input{capitulos/I-marco-referencial/I-marco-referencial}
+    %\input{capitulos/II-marco-teórico/II-marco-teórico}
+    %\input{capitulos/III-diseño-metodológico/III-diseño-metodológico}
+    %\input{capitulos/IV-evaluación-de-resultados/IV-evaluación-de-resultados}
+    %\input{capitulos/13-bibliografia}
+    %\input{capitulos/03-anexos}
+        
+    % \endgroup
+    % \bibliographystyle{apacite}
+    % \bibliography{capitulos/biblio.bib}
+	%--------------------------------------------------
+	
+	
+	
+	%BACKMATTER
+	%---------------------------------------------------
+% 	\backmatter
+% 	%BIBLIOGRAFÍA.
+% 	%\cleardoublepage
+% 	\addcontentsline{toc}{chapter}{Bibliografía}
+% 	\bibliographystyle{apalike}
+% 		\bibliography{capitulos/biblio}
+		
+	%---------------------------------------------------	
+	
+\end{document}
+
+
+%NO OLVIDAR CITAR!

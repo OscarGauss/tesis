@@ -1,0 +1,279 @@
+\section{DISEÑO DEL SISTEMA}
+
+\subsection{COMPONENTES DEL SISTEMA}
+
+\begin{enumerate}
+    \item Módulo de Autenticación:
+    
+	•	Registro, inicio de sesión y gestión de sesiones.
+ 
+    \item Módulo de Problemas:
+    
+	•	Interfaz para navegar y buscar problemas.
+ 
+	•	Formulario para envío de soluciones.
+ 
+    \item Módulo de Evaluación:
+    
+	•	Sistema para ejecutar y evaluar soluciones.
+ 
+	•	Integración con un sistema de colas para manejar múltiples evaluaciones concurrentes.
+    \item Módulo de Competencias:
+    
+	•	Creación y gestión de competencias.
+ 
+	•	Interfaz para visualizar clasificaciones y resultados.
+    \item Módulo Educativo:
+    
+	•	Repositorio de tutoriales y artículos.
+ 
+	•	Interfaz para buscar y visualizar recursos educativos.
+    \item Módulo de Comunidad:
+    
+	•	Foros de discusión y mensajería.
+ 
+	•	Sistema de notificaciones.
+\end{enumerate}
+
+\subsection{Interfaz de Usuario}
+
+\textbf{Pantallas y Características}
+
+\begin{itemize}
+    \item \textbf{Pantalla de Registro}
+    \begin{itemize}
+        \item Formulario de registro con campos: nombre, correo electrónico, contraseña, confirmación de contraseña.
+        \item Botón de registro.
+        \item Enlace a la pantalla de inicio de sesión.
+    \end{itemize}
+
+    \item \textbf{Pantalla de Inicio de Sesión}
+    \begin{itemize}
+        \item Formulario de inicio de sesión con campos: correo electrónico, contraseña.
+        \item Botón de inicio de sesión.
+        \item Enlace a la pantalla de registro.
+        \item Enlace a la pantalla de recuperación de contraseña.
+    \end{itemize}
+
+    \item \textbf{Pantalla de Perfil de Usuario}
+    \begin{itemize}
+        \item Información del usuario: nombre, correo electrónico, estadísticas, logros.
+        \item Botón para editar perfil.
+        \item Lista de problemas resueltos.
+        \item Enlace a configuración de la cuenta.
+    \end{itemize}
+
+    \item \textbf{Pantalla de Banco de Problemas}
+    \begin{itemize}
+        \item Lista de problemas con filtros por categoría, dificultad.
+        \item Barra de búsqueda.
+        \item Enlace a la pantalla de detalles del problema.
+        \item Botón para agregar nuevo problema (solo administradores).
+    \end{itemize}
+
+    \item \textbf{Pantalla de Detalles del Problema}
+    \begin{itemize}
+        \item Descripción del problema.
+        \item Campos de entrada para enviar solución.
+        \item Botón para enviar solución.
+        \item Feedback de la evaluación.
+    \end{itemize}
+
+    \item \textbf{Pantalla de Competencias}
+    \begin{itemize}
+        \item Lista de competencias actuales y pasadas.
+        \item Botón para crear nueva competencia (solo administradores).
+        \item Enlace a los detalles de la competencia.
+    \end{itemize}
+
+    \item \textbf{Pantalla de Recursos Educativos}
+    \begin{itemize}
+        \item Lista de tutoriales y artículos.
+        \item Barra de búsqueda.
+        \item Botón para agregar nuevo recurso (solo administradores).
+        \item Enlace a la pantalla de detalles del recurso.
+    \end{itemize}
+
+    \item \textbf{Pantalla de Foros de Discusión}
+    \begin{itemize}
+        \item Lista de temas de discusión.
+        \item Barra de búsqueda.
+        \item Botón para crear nuevo tema.
+        \item Enlace a la pantalla de detalles del tema.
+    \end{itemize}
+
+    \item \textbf{Pantalla de Mensajes}
+    \begin{itemize}
+        \item Lista de conversaciones.
+        \item Enlace a la pantalla de detalles de la conversación.
+        \item Campo para redactar y enviar mensajes.
+    \end{itemize}
+
+    \item \textbf{Pantalla de Notificaciones}
+    \begin{itemize}
+        \item Lista de notificaciones.
+        \item Enlace a la pantalla relevante según la notificación.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Servicios API en el Backend}
+
+\textbf{Endpoints y Descripción}
+
+\begin{itemize}
+    \item \textbf{Autenticación}
+    \begin{itemize}
+        \item \texttt{POST /api/register}: Registro de nuevos usuarios.
+        \item \texttt{POST /api/login}: Inicio de sesión de usuarios.
+        \item \texttt{POST /api/logout}: Cierre de sesión.
+        \item \texttt{POST /api/password/reset}: Solicitud de restablecimiento de contraseña.
+    \end{itemize}
+
+    \item \textbf{Usuarios}
+    \begin{itemize}
+        \item \texttt{GET /api/users/:id}: Obtener información del usuario.
+        \item \texttt{PUT /api/users/:id}: Actualizar información del usuario.
+        \item \texttt{DELETE /api/users/:id}: Eliminar cuenta de usuario.
+    \end{itemize}
+
+    \item \textbf{Problemas}
+    \begin{itemize}
+        \item \texttt{GET /api/problems}: Listar problemas.
+        \item \texttt{POST /api/problems}: Agregar nuevo problema.
+        \item \texttt{GET /api/problems/:id}: Obtener detalles del problema.
+        \item \texttt{PUT /api/problems/:id}: Editar problema.
+        \item \texttt{DELETE /api/problems/:id}: Eliminar problema.
+        \item \texttt{POST /api/problems/:id/submit}: Enviar solución al problema.
+    \end{itemize}
+
+    \item \textbf{Competencias}
+    \begin{itemize}
+        \item \texttt{GET /api/competitions}: Listar competencias.
+        \item \texttt{POST /api/competitions}: Crear nueva competencia.
+        \item \texttt{GET /api/competitions/:id}: Obtener detalles de la competencia.
+        \item \texttt{PUT /api/competitions/:id}: Editar competencia.
+        \item \texttt{DELETE /api/competitions/:id}: Eliminar competencia.
+    \end{itemize}
+
+    \item \textbf{Recursos Educativos}
+    \begin{itemize}
+        \item \texttt{GET /api/resources}: Listar recursos educativos.
+        \item \texttt{POST /api/resources}: Agregar nuevo recurso.
+        \item \texttt{GET /api/resources/:id}: Obtener detalles del recurso.
+        \item \texttt{PUT /api/resources/:id}: Editar recurso.
+        \item \texttt{DELETE /api/resources/:id}: Eliminar recurso.
+    \end{itemize}
+
+    \item \textbf{Foros de Discusión}
+    \begin{itemize}
+        \item \texttt{GET /api/forums}: Listar temas de discusión.
+        \item \texttt{POST /api/forums}: Crear nuevo tema de discusión.
+        \item \texttt{GET /api/forums/:id}: Obtener detalles del tema.
+        \item \texttt{POST /api/forums/:id/reply}: Responder a un tema.
+    \end{itemize}
+
+    \item \textbf{Mensajes}
+    \begin{itemize}
+        \item \texttt{GET /api/messages}: Listar conversaciones.
+        \item \texttt{POST /api/messages}: Enviar mensaje.
+        \item \texttt{GET /api/messages/:id}: Obtener detalles de la conversación.
+    \end{itemize}
+
+    \item \textbf{Notificaciones}
+    \begin{itemize}
+        \item \texttt{GET /api/notifications}: Listar notificaciones.
+        \item \texttt{POST /api/notifications}: Crear notificación.
+        \item \texttt{DELETE /api/notifications/:id}: Eliminar notificación.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Diseño de la Base de Datos en MongoDB}
+
+\textbf{Esquema de la Base de Datos}
+
+\begin{itemize}
+    \item \textbf{Colección: Users}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{name}: String
+        \item \texttt{email}: String
+        \item \texttt{password}: String (hashed)
+        \item \texttt{statistics}: Object
+        \item \texttt{achievements}: Array
+    \end{itemize}
+
+    \item \textbf{Colección: Problems}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{title}: String
+        \item \texttt{description}: String
+        \item \texttt{difficulty}: String
+        \item \texttt{category}: String
+        \item \texttt{testCases}: Array
+    \end{itemize}
+
+    \item \textbf{Colección: Solutions}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{problemId}: ObjectId
+        \item \texttt{userId}: ObjectId
+        \item \texttt{code}: String
+        \item \texttt{status}: String
+        \item \texttt{feedback}: String
+    \end{itemize}
+
+    \item \textbf{Colección: Competitions}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{name}: String
+        \item \texttt{description}: String
+        \item \texttt{startDate}: Date
+        \item \texttt{endDate}: Date
+        \item \texttt{problems}: Array
+        \item \texttt{teams}: Array
+    \end{itemize}
+    
+    \item \textbf{Colección: Teams}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{name}: String
+        \item \texttt{members}: Array
+    \end{itemize}
+    
+    \item \textbf{Colección: Resources}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{title}: String
+        \item \texttt{content}: String
+        \item \texttt{type}: String
+    \end{itemize}
+    
+    \item \textbf{Colección: Forums}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{title}: String
+        \item \texttt{content}: String
+        \item \texttt{authorId}: ObjectId
+        \item \texttt{replies}: Array
+    \end{itemize}
+    
+    \item \textbf{Colección: Messages}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{conversationId}: ObjectId
+        \item \texttt{senderId}: ObjectId
+        \item \texttt{recipientId}: ObjectId
+        \item \texttt{content}: String
+        \item \texttt{timestamp}: Date
+    \end{itemize}
+    
+    \item \textbf{Colección: Notifications}
+    \begin{itemize}
+        \item \texttt{\_id}: ObjectId
+        \item \texttt{userId}: ObjectId
+        \item \texttt{message}: String
+        \item \texttt{link}: String
+        \item \texttt{read}: Boolean
+        \item \texttt{timestamp}: Date
+    \end{itemize}
+\end{itemize}
